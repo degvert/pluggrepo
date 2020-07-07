@@ -14,7 +14,6 @@ int const COLOR_PAYOUT = 2;
 int const NUMBER_PAYOUT = 10; 
 
 //Global struct för hjulets utfall; nummer och färg.
-//TESTÄNDRING PGA. GITHUB PULLREQUEST IGNORERA
 struct WheelOutcome
 {
     int number;
