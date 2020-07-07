@@ -4,16 +4,17 @@
 using namespace std;
 
 //Konstanter
-//Max och minimum värden för slump-funktion
+//Max och minimum vÃ¤rden fÃ¶r slump-funktion
 int const MAX_VALUE = 36;
 int const MIN_VALUE = 1;
-//Minsta tillåtna insats
+//Minsta tillÃ¥tna insats
 int const MIN_BET = 100;
-//Faktor att multiplicera insats med vid vinst vid rätt färg respektive nummer
+//Faktor att multiplicera insats med vid vinst vid rÃ¤tt fÃ¤rg respektive nummer
 int const COLOR_PAYOUT = 2;
 int const NUMBER_PAYOUT = 10; 
 
-//Global struct för hjulets utfall; nummer och färg.
+//Global struct fÃ¶r hjulets utfall; nummer och fÃ¤rg.
+//TESTÃ„NDRING PGA. GITHUB PULLREQUEST IGNORERA
 struct WheelOutcome
 {
     int number;
@@ -47,18 +48,18 @@ void EmptyNewLines();
 
 int main()
 {
-    //Möjliggör stöd för åäö i konsollfönstret
+    //MÃ¶jliggÃ¶r stÃ¶d fÃ¶r Ã¥Ã¤Ã¶ i konsollfÃ¶nstret
     setlocale(LC_ALL, "swedish");
     
-    //Kör uppstartsfunktion
+    //KÃ¶r uppstartsfunktion
     StartUp();
 
-    //En while-loop som kör så länge spelaren inte väljer att avsluta eller har för lite pengar på kontot
+    //En while-loop som kÃ¶r sÃ¥ lÃ¤nge spelaren inte vÃ¤ljer att avsluta eller har fÃ¶r lite pengar pÃ¥ kontot
     while (!gameOver)
     {
-        //Funktioner att anropa under spelets gång
+        //Funktioner att anropa under spelets gÃ¥ng
         NewRound();
-        //If-sats som kontrollerar om spelaren valt att avsluta inför ny runda
+        //If-sats som kontrollerar om spelaren valt att avsluta infÃ¶r ny runda
         if (gameOver)
         return 0;
         PlaceBet();
@@ -73,40 +74,40 @@ int main()
 
 void StartUp()
 {
-    //Initierar globala variabler för pågående spel och återstående pengar
+    //Initierar globala variabler fÃ¶r pÃ¥gÃ¥ende spel och Ã¥terstÃ¥ende pengar
     gameOver = false;
     moneyRemaining = 1000;
     char answer;
     int age;
-    cout << "Välkommen till Fabians roulettehjul!\n";
-    cout << "Du måste vara över 18 år för att spela.\n";
-    //Kontrollera spelarens ålder
+    cout << "VÃ¤lkommen till Fabians roulettehjul!\n";
+    cout << "Du mÃ¥ste vara Ã¶ver 18 Ã¥r fÃ¶r att spela.\n";
+    //Kontrollera spelarens Ã¥lder
     do
     {
-        cout << "Ange din ålder: \n";
+        cout << "Ange din Ã¥lder: \n";
         cin >> age;
         cin.clear();
         cin.ignore(10000, '\n');
     } while (!age);
-    //Om spelaren är under 18 år sätts gameOver-variabel till true
+    //Om spelaren Ã¤r under 18 Ã¥r sÃ¤tts gameOver-variabel till true
     if (age < 18)
     {
-       cout << "Du måste vara minst 18 år för att få spela - avslutar Fabians roulettehjul.\n";
+       cout << "Du mÃ¥ste vara minst 18 Ã¥r fÃ¶r att fÃ¥ spela - avslutar Fabians roulettehjul.\n";
        gameOver = true;
     }
-    //Skapa tomrader i konsollfönstret
+    //Skapa tomrader i konsollfÃ¶nstret
     EmptyNewLines();
     
 }
 
 void NewRound()
 {
-    //Variabler för ny runda
-    //Nolla hjulutfallets nummer inför en ny runda
+    //Variabler fÃ¶r ny runda
+    //Nolla hjulutfallets nummer infÃ¶r en ny runda
     wheelOutcome.number = 0;
     int answer;
 
-    //Kontrollera att spelaren har tillräckligt med pengar för att spela en runda.
+    //Kontrollera att spelaren har tillrÃ¤ckligt med pengar fÃ¶r att spela en runda.
     if (moneyRemaining < MIN_BET)
     {
         gameOver = true;
@@ -114,47 +115,47 @@ void NewRound()
     }
     else
     {
-        //Validera att korrekt värde matas in från användaren i en while loop
-        //Använder cin.clear för att rensa ev. fel-status på inmatningsströmmen. Och cin.ignore för att rensa oönskade värden.
+        //Validera att korrekt vÃ¤rde matas in frÃ¥n anvÃ¤ndaren i en while loop
+        //AnvÃ¤nder cin.clear fÃ¶r att rensa ev. fel-status pÃ¥ inmatningsstrÃ¶mmen. Och cin.ignore fÃ¶r att rensa oÃ¶nskade vÃ¤rden.
         do
         {
             cout << "HUVUDMENY\n";
-            cout << "(1) Spela en runda på kasinohjulet\n";
-            cout << "(2) Avsluta spelet och ta ut "  << moneyRemaining << " kr från spelkontot\n";
+            cout << "(1) Spela en runda pÃ¥ kasinohjulet\n";
+            cout << "(2) Avsluta spelet och ta ut "  << moneyRemaining << " kr frÃ¥n spelkontot\n";
             cout << endl;
-            //Visualisera antalet spelade omgångar och återsåtende pengar på kontot.
+            //Visualisera antalet spelade omgÃ¥ngar och Ã¥tersÃ¥tende pengar pÃ¥ kontot.
             cout << "------------------------------\n";
-            cout << "SPELADE OMGÅNGAR:      [  " << numPlayedRounds <<" st ]\n";
-            cout << "ÅTERSTÅENDE PENGAR:    [" << moneyRemaining << " kr]\n";
+            cout << "SPELADE OMGÃ…NGAR:      [  " << numPlayedRounds <<" st ]\n";
+            cout << "Ã…TERSTÃ…ENDE PENGAR:    [" << moneyRemaining << " kr]\n";
             cout << "TOTAL VINSTSUMMA:      [" << totMoneyWon << " kr]\n";
             cin >> answer;
             cin.clear();
             cin.ignore(10000, '\n');
         } while (!answer || answer < 1 || answer > 2);
         
-        //Sätter gameOver till sant om användaren väljer att inte fortsätta den nya rundan
+        //SÃ¤tter gameOver till sant om anvÃ¤ndaren vÃ¤ljer att inte fortsÃ¤tta den nya rundan
         if (answer == 2)
         {
-            cout << "Avslutar spelet. På återseende!\n";
+            cout << "Avslutar spelet. PÃ¥ Ã¥terseende!\n";
             gameOver = true;
         }
     }
-    //Skapar tomrader i konsollfönstret
+    //Skapar tomrader i konsollfÃ¶nstret
     EmptyNewLines();
 }
 
 void PlaceBet()
 {
-    //Variabel för input från användare
+    //Variabel fÃ¶r input frÃ¥n anvÃ¤ndare
     int answer;
-    //Användare matar in önskat val av insats.
-    //Validera att korrekt värde matas in från användaren i en while loop. Ser till att använda cin.clear och cin.ignore för att undvika fel vid upprepad inmatning.
+    //AnvÃ¤ndare matar in Ã¶nskat val av insats.
+    //Validera att korrekt vÃ¤rde matas in frÃ¥n anvÃ¤ndaren i en while loop. Ser till att anvÃ¤nda cin.clear och cin.ignore fÃ¶r att undvika fel vid upprepad inmatning.
     do
     {
-        cout << "Välj din insats:\n"; 
+        cout << "VÃ¤lj din insats:\n"; 
         cout << "(1) : 100 kr\n";
         cout << "(2) : 300 kr\n(3) : 500 kr\n";
-        //cout << endl << moneyRemaining << " kr tillgängligt.";
+        //cout << endl << moneyRemaining << " kr tillgÃ¤ngligt.";
         cin >> answer;
         cin.clear();
         cin.ignore(10000, '\n');
@@ -176,17 +177,17 @@ void PlaceBet()
     //Kontrollera vald insats i ValidateBet-funktion
     ValidateBet();
 
-    //Skapa tomrader i konsollfönstret
+    //Skapa tomrader i konsollfÃ¶nstret
     EmptyNewLines();
 }
 
 void ValidateBet()
 {
-    //Kontrollerar att man inte valt en för hög insats mot återstående pengar
-    //Reducerar den godtyckliga valda insatsen från användarens nuvarande saldo
+    //Kontrollerar att man inte valt en fÃ¶r hÃ¶g insats mot Ã¥terstÃ¥ende pengar
+    //Reducerar den godtyckliga valda insatsen frÃ¥n anvÃ¤ndarens nuvarande saldo
     if (currentBet > moneyRemaining)
     {
-        cout << "För hög insats vald. Välj en godtycklig insats. Du har " << moneyRemaining << " kronor kvar på kontot. ";
+        cout << "FÃ¶r hÃ¶g insats vald. VÃ¤lj en godtycklig insats. Du har " << moneyRemaining << " kronor kvar pÃ¥ kontot. ";
         PlaceBet();
     }
     else
@@ -197,36 +198,36 @@ void ValidateBet()
 
 void PickGameMode()
 {
-    //Funktion för att låta användaren välja spelläge: nummer eller färg och tilldela detta till global variabel för spelläge
+    //Funktion fÃ¶r att lÃ¥ta anvÃ¤ndaren vÃ¤lja spellÃ¤ge: nummer eller fÃ¤rg och tilldela detta till global variabel fÃ¶r spellÃ¤ge
 
-    //Do while-loop för att validera inmatningen. 
+    //Do while-loop fÃ¶r att validera inmatningen. 
     //Loopar till godtycklig inmatning gjorts. Tilldelar gameMode-variabel.
     do 
     {
-        cout << "Välj önskat spelläge:\n";
-        cout << "(1): Spela på nummer - 10 gånger vid vinst\n";
-        cout << "(2): Spela på färg - 2 gånger insats vid vinst\n";
+        cout << "VÃ¤lj Ã¶nskat spellÃ¤ge:\n";
+        cout << "(1): Spela pÃ¥ nummer - 10 gÃ¥nger vid vinst\n";
+        cout << "(2): Spela pÃ¥ fÃ¤rg - 2 gÃ¥nger insats vid vinst\n";
         cin >> gameMode;
         cin.clear();
         cin.ignore(10000, '\n');
     } 
     while (!gameMode || gameMode < 1 || gameMode > 2);
-    //Skapa tomrader i konsollfönstret
+    //Skapa tomrader i konsollfÃ¶nstret
     EmptyNewLines();
 }
 
 void PickNumOrCol()
 {
-    //Användare matar in sitt bet beroende på spelläge: nummer eller färg.
-    //GAME MODE 1 ÄR NUMMER
-    //GAME MODE 2 ÄR FÄRG
+    //AnvÃ¤ndare matar in sitt bet beroende pÃ¥ spellÃ¤ge: nummer eller fÃ¤rg.
+    //GAME MODE 1 Ã„R NUMMER
+    //GAME MODE 2 Ã„R FÃ„RG
     switch (gameMode)
     {
-    //Vid val av siffra valideras att inmatning är en siffra och mellan intervallet 1-36.
+    //Vid val av siffra valideras att inmatning Ã¤r en siffra och mellan intervallet 1-36.
     case 1:
         do
         {
-            cout << "Ange önskat nummer mellan 1-36: \n";
+            cout << "Ange Ã¶nskat nummer mellan 1-36: \n";
             cin >> numPicked;
             cin.clear();
             cin.ignore(10000, '\n');
@@ -234,13 +235,13 @@ void PickNumOrCol()
         while (!numPicked || numPicked < 1 || numPicked > 36);
         break;
         
-    //Vid val av färg valideras att inmatning 
+    //Vid val av fÃ¤rg valideras att inmatning 
     case 2:
         do
         {
-            cout << "Ange önskad färg: \n";
+            cout << "Ange Ã¶nskad fÃ¤rg: \n";
             cout << "Svart (S) \n";
-            cout << "Röd (R) \n";
+            cout << "RÃ¶d (R) \n";
             cin >> colPicked;
             cin.clear();
             cin.ignore(10000, '\n');
@@ -249,19 +250,19 @@ void PickNumOrCol()
         break;
         
     }
-    //Skapa tomrader i konsollfönstret
+    //Skapa tomrader i konsollfÃ¶nstret
     EmptyNewLines();
 
 }
 
 void SpinWheel()
 {
-    //Streck för gränssnittets skull
+    //Streck fÃ¶r grÃ¤nssnittets skull
     cout << "//////////////////////////////////\n";
-    //Funktion för att snurra på roulettehjulet och slumpa fram ett nummer mellan 1 och 36.
+    //Funktion fÃ¶r att snurra pÃ¥ roulettehjulet och slumpa fram ett nummer mellan 1 och 36.
     srand(time(0));
     wheelOutcome.number = rand() % 36 + 1;
-    cout << "ROULETTEHJULET STANNAR PÅ\n";
+    cout << "ROULETTEHJULET STANNAR PÃ…\n";
     cout << "NUMMER: " << wheelOutcome.number << endl;
 
 
@@ -269,10 +270,10 @@ void SpinWheel()
 
 void CalculateColor()
 {
-    //Ett roulettehjuls siffror är färgade i svart eller rött enligt vissa regler. Vi är i detta program endast intresserade av siffrorna 1 till 36.
-    //Inom intervallen 1-10 och 19-28 är ojämna tal röda och jämna svarta. 
-    //Inom intervallen 11-18 och 29-36 är ojämna tal svarta och jämna röda.
-    //Nedan följer sammanflätade if-satser för att urskilja färg på det framslumpade värdet mellan 1-36
+    //Ett roulettehjuls siffror Ã¤r fÃ¤rgade i svart eller rÃ¶tt enligt vissa regler. Vi Ã¤r i detta program endast intresserade av siffrorna 1 till 36.
+    //Inom intervallen 1-10 och 19-28 Ã¤r ojÃ¤mna tal rÃ¶da och jÃ¤mna svarta. 
+    //Inom intervallen 11-18 och 29-36 Ã¤r ojÃ¤mna tal svarta och jÃ¤mna rÃ¶da.
+    //Nedan fÃ¶ljer sammanflÃ¤tade if-satser fÃ¶r att urskilja fÃ¤rg pÃ¥ det framslumpade vÃ¤rdet mellan 1-36
     if (wheelOutcome.number <= 10)
         if (wheelOutcome.number % 2 == 0)
             wheelOutcome.color = 's';
@@ -290,31 +291,31 @@ void CalculateColor()
             wheelOutcome.color = 'r';
         else wheelOutcome.color = 's';
 
-    //En switch för att skriva ut färgen i en sträng istället för char som används i datatypen
+    //En switch fÃ¶r att skriva ut fÃ¤rgen i en strÃ¤ng istÃ¤llet fÃ¶r char som anvÃ¤nds i datatypen
     switch (wheelOutcome.color)
     {
     case 's':
-        cout << "FÄRG: SVART\n";
+        cout << "FÃ„RG: SVART\n";
         break;
 
     case 'r':
-        cout << "FÄRG: RÖD\n";
+        cout << "FÃ„RG: RÃ–D\n";
         break;
     }
     
     
-    //Streck för gränssnittet skull
+    //Streck fÃ¶r grÃ¤nssnittet skull
     cout << "//////////////////////////////////\n";
-    //Skapa tomrader i konsollfönstret
+    //Skapa tomrader i konsollfÃ¶nstret
     EmptyNewLines();
 }
 
 void CalculateOutcome()
 {
-    //Funktion för att beräkna utfall av rundan. Eventuella vinstpengar är beroende på val av spelläge(färg eller nummer) och beräknas därefter.
-    //Rätt färg ger 2x insats. Rätt nummer ger 10x insats. 
-    //GAME MODE 1 ÄR NUMMER
-    //GAME MODE 2 ÄR FÄRG
+    //Funktion fÃ¶r att berÃ¤kna utfall av rundan. Eventuella vinstpengar Ã¤r beroende pÃ¥ val av spellÃ¤ge(fÃ¤rg eller nummer) och berÃ¤knas dÃ¤refter.
+    //RÃ¤tt fÃ¤rg ger 2x insats. RÃ¤tt nummer ger 10x insats. 
+    //GAME MODE 1 Ã„R NUMMER
+    //GAME MODE 2 Ã„R FÃ„RG
 
 
     //Lokala variabler
@@ -322,40 +323,40 @@ void CalculateOutcome()
     bool roundWin = false;
     switch (gameMode)
     {
-    //Vid spelläge val av nummer
+    //Vid spellÃ¤ge val av nummer
     case 1: 
-        //If-sats för att kontrollera om rätt nummer valts mot hjulets utfall
-        //Beroende på vinst/förlust uppdateras boolean till sant eller falskt för att kunna hantera cout utan switch statement
+        //If-sats fÃ¶r att kontrollera om rÃ¤tt nummer valts mot hjulets utfall
+        //Beroende pÃ¥ vinst/fÃ¶rlust uppdateras boolean till sant eller falskt fÃ¶r att kunna hantera cout utan switch statement
         if (wheelOutcome.number == numPicked)
         {
-            //Beräknar vinst genom att multiplicera med konstanten för rätt nummer-odds
+            //BerÃ¤knar vinst genom att multiplicera med konstanten fÃ¶r rÃ¤tt nummer-odds
             moneyWon = currentBet * NUMBER_PAYOUT;
-            cout << "GRATTIS! DU VALDE RÄTT NUMMER!\n";
+            cout << "GRATTIS! DU VALDE RÃ„TT NUMMER!\n";
             cout << "DU VINNER " << moneyWon << " kr.\n";
-            cout << "Pengarna har satts över på ditt konto.\n";
+            cout << "Pengarna har satts Ã¶ver pÃ¥ ditt konto.\n";
             roundWin = true;
         }
         else roundWin = false;
         break;
 
-    //Vid spelläge val av färg
+    //Vid spellÃ¤ge val av fÃ¤rg
     case 2:
-        //If-sats för att kontrollera om rätt färg valts mot hjulets utfall
+        //If-sats fÃ¶r att kontrollera om rÃ¤tt fÃ¤rg valts mot hjulets utfall
         if (wheelOutcome.color == colPicked)
         {
-            //Beräknar vinst genom att multiplicera med konstanten för rätt färg-odds
+            //BerÃ¤knar vinst genom att multiplicera med konstanten fÃ¶r rÃ¤tt fÃ¤rg-odds
             moneyWon = currentBet * COLOR_PAYOUT;
-            cout << "GRATTIS! DU VALDE RÄTT FÄRG!\n";
+            cout << "GRATTIS! DU VALDE RÃ„TT FÃ„RG!\n";
             cout << "DU VINNER " << moneyWon << " kr.\n";
-            cout << "Pengarna har satts över på ditt konto.\n";
+            cout << "Pengarna har satts Ã¶ver pÃ¥ ditt konto.\n";
             roundWin = true;
         }
         else roundWin = false;
         break;
     }
-    //Visa text beroende på vinst eller förlust oavsett spelläge
-    //Adderar denna rundans ev. vinst till variabel för totala vinst
-    //Lägger tillbaka vinsten till användarens konto
+    //Visa text beroende pÃ¥ vinst eller fÃ¶rlust oavsett spellÃ¤ge
+    //Adderar denna rundans ev. vinst till variabel fÃ¶r totala vinst
+    //LÃ¤gger tillbaka vinsten till anvÃ¤ndarens konto
     
     if (roundWin)
     {
@@ -363,17 +364,17 @@ void CalculateOutcome()
         moneyRemaining += moneyWon;
         cout << endl;
         cout << "------------------------------------\n";
-        cout << "Du har totalt vunnit " << totMoneyWon << " sedan du började spela.\n";
+        cout << "Du har totalt vunnit " << totMoneyWon << " sedan du bÃ¶rjade spela.\n";
     }
-    else cout << "Tyvärr ingen vinst denna gång. Bättre lycka nästa gång.\n";
+    else cout << "TyvÃ¤rr ingen vinst denna gÃ¥ng. BÃ¤ttre lycka nÃ¤sta gÃ¥ng.\n";
     
-    //Skapa tomrader i konsollfönstret
+    //Skapa tomrader i konsollfÃ¶nstret
     EmptyNewLines();
     
-    //Addera variabel för antalet spelade omgångar med 1
+    //Addera variabel fÃ¶r antalet spelade omgÃ¥ngar med 1
     numPlayedRounds++;
     
-    //För att inte direkt återvända till första menyn ber jag användare bekräfta utfallet
+    //FÃ¶r att inte direkt Ã¥tervÃ¤nda till fÃ¶rsta menyn ber jag anvÃ¤ndare bekrÃ¤fta utfallet
     int answer;
     do
     {
@@ -385,18 +386,18 @@ void CalculateOutcome()
         cin.ignore(10000, '\n');
     } while (answer != 1 && answer != 2);
     
-    //Sätter variabel gameOver till true om användare valt att avsluta spelet
+    //SÃ¤tter variabel gameOver till true om anvÃ¤ndare valt att avsluta spelet
     if (answer == 2)
         gameOver = true;
 
-    //Skapa tomrader i konsollfönstret
+    //Skapa tomrader i konsollfÃ¶nstret
     EmptyNewLines();
 }
 
 void EmptyNewLines()
 {
-    //Funktion för att skapa ett par tomma rader för att ge ett renare gränssnitt mellan funktionerna
-    //Loopar en en ny rad 2 gånger
+    //Funktion fÃ¶r att skapa ett par tomma rader fÃ¶r att ge ett renare grÃ¤nssnitt mellan funktionerna
+    //Loopar en en ny rad 2 gÃ¥nger
     for (int i = 0; i < 2; i++)
     {
         cout << "\n";
